@@ -1,15 +1,19 @@
+
 # How to Run the CreatioLoggerPkg
 
 This guide explains how to use the CreatioLoggerPkg in your Creatio environment.
 
 ## 1. Prerequisites
-- The CommunicationLoggerApi (your .NET API) must be hosted and accessible from your Creatio instance. See HOW_TO_HOST.md for details.
+- **You must host the CommunicationLoggerApi (your .NET API) and make it accessible from your Creatio instance.**
+  - See HOW_TO_HOST.md for hosting instructions.
+  - The Creatio package only registers the web service; it does not host the API itself.
 
 ## 2. Import the Package into Creatio
-1. In Creatio, go to **System Designer → Installed Applications**.
-2. Click **Add Application → Import from file**.
-3. Select the `CreatioLoggerPkg` folder (zipped) or its contents as a package.
-4. Complete the import process.
+1. Zip the contents of the `CreatioLoggerPkg` folder (not the folder itself, but its contents).
+2. In Creatio, go to **System Designer → Installed Applications**.
+3. Click **Add Application → Import from file**.
+4. Select your zipped package and upload it.
+5. Complete the import process.
 
 ## 3. Configure the Web Service
 - After import, go to **System Designer → Web Services**.
@@ -25,5 +29,9 @@ This guide explains how to use the CreatioLoggerPkg in your Creatio environment.
 - Run your business process or use the web service from a script to log and view communication events.
 
 ---
+
+**Summary:**
+- You must host the CommunicationLoggerApi separately (IIS, cloud, etc.).
+- The Creatio package only registers the web service for plug-and-play use in Creatio.
 
 For more details, see the README in this package or your main project.
