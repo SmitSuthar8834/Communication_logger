@@ -1,0 +1,12 @@
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\bin\Debug\net9.0\CommunicationMiddleware.deps.json
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\bin\Debug\net9.0\CommunicationMiddleware.dll
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\bin\Debug\net9.0\CommunicationMiddleware.pdb
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.GeneratedMSBuildEditorConfig.editorconfig
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.AssemblyInfoInputs.cache
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.AssemblyInfo.cs
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.csproj.CoreCompileInputs.cache
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.sourcelink.json
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.dll
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\refint\CommunicationMiddleware.dll
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\CommunicationMiddleware.pdb
+A:\Personal_projects\Communication_MiddleWaare\CommunicationMiddleware\obj\Debug\net9.0\ref\CommunicationMiddleware.dll
