@@ -5,27 +5,59 @@ namespace CommunicationMiddleware
     /// <summary>
     /// Interface for logging communication between Creatio and external systems.
     /// </summary>
+
+    /// <summary>
+    /// Structured log entry for communication events.
+    /// </summary>
+    public class CommunicationLogEntry
+    {
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        public string Direction { get; set; } = string.Empty; // "CreatioToExternal" or "ExternalToCreatio"
+        public string Message { get; set; } = string.Empty;
+        public object? Payload { get; set; }
+    }
+
     public interface ICommunicationLogger
     {
-        void LogCreatioToExternal(string message, object payload);
-        void LogExternalToCreatio(string message, object payload);
+        void Log(CommunicationLogEntry entry);
     }
 
     /// <summary>
     /// Default implementation of ICommunicationLogger.
     /// </summary>
+
+    /// <summary>
+    /// Default logger: logs to console and file.
+    /// </summary>
     public class CommunicationLogger : ICommunicationLogger
     {
-        public void LogCreatioToExternal(string message, object payload)
+        private readonly string _logFilePath;
+
+        public CommunicationLogger(string logFilePath = "communication_log.txt")
         {
-            // Implement logging logic here (e.g., write to file, database, etc.)
-            Console.WriteLine($"[Creatio->External] {DateTime.UtcNow}: {message} | Payload: {payload}");
+            _logFilePath = logFilePath;
         }
 
-        public void LogExternalToCreatio(string message, object payload)
+        public void Log(CommunicationLogEntry entry)
         {
-            // Implement logging logic here (e.g., write to file, database, etc.)
-            Console.WriteLine($"[External->Creatio] {DateTime.UtcNow}: {message} | Payload: {payload}");
+            string logLine = $"[{entry.Direction}] {entry.Timestamp:u}: {entry.Message} | Payload: {entry.Payload}";
+            Console.WriteLine(logLine);
+            try
+            {
+                System.IO.File.AppendAllText(_logFilePath, logLine + System.Environment.NewLine);
+            }
+            catch { /* Handle file I/O errors as needed */ }
+        }
+    }
+
+    /// <summary>
+    /// Example: custom logger for database or external log service.
+    /// </summary>
+    public class CustomCommunicationLogger : ICommunicationLogger
+    {
+        public void Log(CommunicationLogEntry entry)
+        {
+            // Implement custom storage logic (e.g., database, API call)
         }
     }
 
@@ -41,15 +73,33 @@ namespace CommunicationMiddleware
             _logger = logger;
         }
 
+        /// <summary>
+        /// Log a request from Creatio to an external system.
+        /// </summary>
         public void HandleCreatioToExternal(string message, object payload)
         {
-            _logger.LogCreatioToExternal(message, payload);
+            var entry = new CommunicationLogEntry
+            {
+                Direction = "CreatioToExternal",
+                Message = message,
+                Payload = payload
+            };
+            _logger.Log(entry);
             // Add additional middleware logic here if needed
         }
 
+        /// <summary>
+        /// Log a request from an external system to Creatio.
+        /// </summary>
         public void HandleExternalToCreatio(string message, object payload)
         {
-            _logger.LogExternalToCreatio(message, payload);
+            var entry = new CommunicationLogEntry
+            {
+                Direction = "ExternalToCreatio",
+                Message = message,
+                Payload = payload
+            };
+            _logger.Log(entry);
             // Add additional middleware logic here if needed
         }
     }
