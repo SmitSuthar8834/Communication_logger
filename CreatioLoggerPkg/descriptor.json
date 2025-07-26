@@ -1,0 +1,8 @@
+{
+  "UId": "b1a1e1c0-0000-0000-0000-000000000001",
+  "PackageVersion": "1.0.0",
+  "Name": "CreatioLoggerPkg",
+  "Description": "Plug-and-play package to register CommunicationLoggerApi as a web service in Creatio.",
+  "Maintainer": "Your Name",
+  "DependsOn": []
+}
